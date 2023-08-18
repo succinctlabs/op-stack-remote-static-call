@@ -3,22 +3,8 @@ pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
 import "../src/Voting.sol";
+import "../src/MockRemoteStaticCall.sol";
 
-contract MockRemoteStaticCall {
-    mapping(bytes32 => bytes) public callResults;
-
-    function call(bytes memory _data) external returns (bytes memory result) {
-        result = callResults[keccak256(_data)];
-        if (result.length == 0) {
-            revert("No result set");
-        }
-        return result;
-    }
-    
-    function setCallResult(bytes memory _data, bytes memory result) external {
-        callResults[keccak256(_data)] = result;
-    }
-}
 
 contract CounterTest is Test {
     L2Voting public voting;
