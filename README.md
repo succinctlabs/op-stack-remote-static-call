@@ -72,4 +72,4 @@ To run a devnet with a custom `op-geth`, you have to do the following steps:
 **Debug Session with Mark**
 * Can't run this devnet when I switch back the replace to not-local and can't run it with the replace to local op-geth
 * The e2e test I added fails because the `http` endpoint that I get is just `http://` so it's useless
-
+* Mock remote static call doesn't work because precompile is called without selector and fallbacks can't return

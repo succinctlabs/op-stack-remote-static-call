@@ -11,6 +11,7 @@ contract CounterTest is Test {
 
     function setUp() public {
         voting = new L2Voting();
+        // TODO: this `MockRemoteStaticCall` doesn't work because the precompile is called without a selector
         remote = new MockRemoteStaticCall();
         vm.etch(address(0x13), address(remote).code);
         remote = MockRemoteStaticCall(address(0x13));
