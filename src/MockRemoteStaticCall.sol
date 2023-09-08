@@ -8,6 +8,10 @@ contract MockRemoteStaticCall {
         if (result.length == 0) {
             revert("No result set");
         }
+        // We have to use assembly to return the result since `fallback` cannot return
+        assembly {
+            return(add(result, 32), mload(result))
+        }
     }
 
     function call(
