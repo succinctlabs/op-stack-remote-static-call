@@ -10,7 +10,11 @@ interface IERC721 {
 }
 
 contract NounsMirror {
-    address public nouns = address(0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF);
+    address public nouns;
+
+    constructor(address _nouns) {
+        nouns = _nouns;
+    }
 
     function balanceOf(address owner) external view returns (uint256 balance) {
         bytes memory result = RemoteStaticCall.call(
