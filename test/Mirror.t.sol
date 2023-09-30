@@ -10,7 +10,7 @@ contract CounterTest is Test {
     MockRemoteStaticCall public remote;
 
     function setUp() public {
-        mirror = new NounsMirror();
+        mirror = new NounsMirror(address(0));
         remote = new MockRemoteStaticCall();
         vm.etch(address(0x13), address(remote).code);
         remote = MockRemoteStaticCall(address(0x13));

@@ -34,4 +34,4 @@ To run a devnet with a custom `op-geth`, you have to do the following steps:
 
 ### Debugging devnet errors
 
-In general, go into the `ops-bedrock` folder and you can run `docker compose logs <container_name>`, so for example `docker compose logs l2` to get the logs of the L2 node.
+In general, go into the `ops-bedrock` folder and you can run `docker compose logs <container_name> --tail 10 -f`, so for example `docker compose logs l2` to get the logs of the L2 node.
