@@ -6,8 +6,11 @@ To test this witih Foundry, follow these steps:
 
 ### Spin up Optimism devnet with remote static call precompile
 
-`git clone optimism` repo and checkout the `feat/remote-static-call` branch
+`git clone optimism` repo and checkout the `feat/remote-static-call` branch. 
+* `git clone https://github.com/puma314/optimism`
+* `git checkout feat/test-remote-static-call`
 
+Then run:
 - `git submodule update --init --recursive`
 - Run `make devnet-up-deploy` in the root of the repo.
 
