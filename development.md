@@ -16,7 +16,7 @@ The next step is to test Optimism end-to-end with your custom `op-geth`. To do t
 - In case you get an error, you might have to also run: `brew install jq`
 - To test the local op-e2e, go into that folder and run `make test`.
 
-You might also want to add a test in the `op-e2e` folder that spins up `op-geth` in memory. An example of a PR that does this for remote static call is this: TODO INSERT HERE.
+You might also want to add a test in the `op-e2e` folder that spins up `op-geth` in memory. An example of a PR that does this for remote static call is [here](https://github.com/ethereum-optimism/optimism/compare/develop...puma314:optimism:feat/test-remote-static-call#diff-9286636f5c04415f4817f6c292254f7b730c54df20812a4180ef2fcba7cea9abR23).
 
 ### Running a devnet with a modified `op-geth`
 
@@ -34,4 +34,6 @@ To run a devnet with a custom `op-geth`, you have to do the following steps:
 
 ### Debugging devnet errors
 
-In general, go into the `ops-bedrock` folder and you can run `docker compose logs <container_name> --tail 10 -f`, so for example `docker compose logs l2` to get the logs of the L2 node.
+In general, go into the `ops-bedrock` folder and you can run `docker compose logs l2 --tail 10 -f`, so for example `docker compose logs l2` to get the logs of the L2 node.
+
+To run a shell in the L2 node image, use the following command: `docker exec -it ops-bedrock-l2-1 sh`.

@@ -6,7 +6,7 @@ To test this witih Foundry, follow these steps:
 
 ### Spin up Optimism devnet with remote static call precompile
 
-`git clone optimism` repo and checkout the `feat/remote-static-call` branch. 
+Clone `puma314`'s `optimism` repo and checkout the `feat/remote-static-call` branch:
 * `git clone https://github.com/puma314/optimism`
 * `git checkout feat/test-remote-static-call`
 
@@ -29,15 +29,14 @@ Traceback (most recent call last):
 
 ### Deploy contract to Optimism devnet using devnet RPC
 
+Copy `.env.example` to `.env` which has the first Anvil private key which comes preloaded with money on the devnet.
+
 Now that the devnet has been spun up, you have to deploy a contract to the devnet L1. To do this, you can run
 * `forge script script/Deploy.s.sol --tc DeployL1 --broadcast`
 
-Then you must deploy your contract on L2 that uses the remote static call RPC. To do this, you can run:
+Then you must deploy your contract on L2 that uses the remote static call RPC. **Remember to update the Deploy variables with the values from the L1 script**. To do this, you can run:
 * `forge script script/Deploy.s.sol --tc DeployL2 --broadcast`
 
-Finally, to interact with that contract, you can either use `cast` manually, or you can use another forge script:
-* `forge script script/Deploy.s.sol --tc UseRemoteStaticCall --broadcast`
+Finally, to interact with the contract on L2 that uses remote static call, use `cast` as below:
 
-An example of using `cast` is below:
-
-`cast call <CONTRACT_ADDRESS> "balanceOf(address)" 0x0000000000000000000000000000000000000001 --rpc-url l2` 
+`cast call <MIRROR_CONTRACT_ADDRESS> "balanceOf(address)" 0x0000000000000000000000000000000000000001 --rpc-url l2` 
